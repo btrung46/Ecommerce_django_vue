@@ -33,8 +33,8 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Iphone</router-link>
-          <router-link to="/winter" class="navbar-item">Samsum</router-link>
+          <router-link to="/Iphone" class="navbar-item">Iphone</router-link>
+          <router-link to="/Xiaomi" class="navbar-item">Xiaomi</router-link>
 
           <div class="navbar-item">
             <div class="buttons">
@@ -49,7 +49,7 @@
               <router-link to="/log-in" class="button is-light">Log in</router-link>
               <router-link to="/cart" class="button is-success">
                 <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-                <span>Cart </span>
+                <span>Cart ({{cartTotalLength}})</span>
               </router-link>
             </div>
           </div>
@@ -66,7 +66,7 @@
     </section>
 
     <footer class="footer">
-      <p class="has-text-centered">Copyright (c) 2021</p>
+      <p class="has-text-centered">Copyright (c) 2024</p>
     </footer>
 </template>
 
@@ -75,8 +75,27 @@ export default {
   data() {
     return {
       showMobileMenu: false,
+      cart:{
+        items:[]
+      }
     }
   },
+  beforeCreate() {
+    this.$store.commit('initializeStore')
+  },
+  mounted(){
+    this.cart = this.$store.state.cart
+  },
+  computed:{
+    cartTotalLength(){
+      let totallength = 0
+      for (let i=0;i< this.cart.items.length;i++){
+        totallength += this.cart.items[i].quantity
+      }
+      return totallength
+    }
+
+  }
 }
 </script>
 
