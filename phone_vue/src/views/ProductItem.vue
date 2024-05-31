@@ -49,7 +49,7 @@ export default {
     },
     methods: {
         async getProduct() {
-            // this.$store.commit('setIsLoading', true)
+            this.$store.commit('setIsLoading', true)
 
             const category_slug = this.$route.params.category_slug
             const product_slug = this.$route.params.product_slug
@@ -59,13 +59,13 @@ export default {
                 .then(response => {
                     this.product = response.data
 
-                    document.title = this.product.name + ' | Djackets'
+                    document.title = this.product.name + ' | Beegs_shop'
                 })
                 .catch(error => {
                     console.log(error)
                 })
             
-            // this.$store.commit('setIsLoading', false)
+            this.$store.commit('setIsLoading', false)
         },
         addToCart(){
             if(isNaN(this.quantity) || this.quantity < 1){
