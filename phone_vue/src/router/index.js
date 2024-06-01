@@ -8,7 +8,8 @@ import CartView from '@/views/CartView.vue'
 import SignUp from '../views/SignUp.vue'
 import LogIn from '../views/LogIn.vue'
 import MyAccount from '../views/MyAccount.vue'
-
+import CheckoutView from '@/views/CheckoutView.vue'
+import SuccessView from '@/views/SuccessView.vue'
 const routes = [
   {
     path: '/',
@@ -58,6 +59,22 @@ const routes = [
     path: '/my-account',
     name: 'MyAccount',
     component: MyAccount,
+    meta: {
+        requireLogin: true
+    }
+  },
+  {
+    path: '/cart/checkout',
+    name: 'CheckoutView',
+    component: CheckoutView,
+    meta: {
+        requireLogin: true
+    }
+  },
+  {
+    path: '/cart/success',
+    name: 'SuccessView',
+    component: SuccessView,
     meta: {
         requireLogin: true
     }

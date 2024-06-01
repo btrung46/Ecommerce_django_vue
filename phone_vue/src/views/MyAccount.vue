@@ -11,14 +11,14 @@
 
             <hr>
 
-            <!-- <div class="column is-12">
+            <div class="column is-12">
                 <h2 class="subtitle">My orders</h2>
 
                 <OrderSummary
                     v-for="order in orders"
                     v-bind:key="order.id"
                     v-bind:order="order" />
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
@@ -26,22 +26,23 @@
 <script>
 import axios from 'axios'
 
-// import OrderSummary from '@/components/OrderSummary.vue'
+import OrderSummary from '@/components/OrderSummary.vue'
 
 export default {
     name: 'MyAccount',
-    // components: {
-    //     OrderSummary
-    // },
-    // data() {
-    //     return {
-    //         orders: []
-    //     }
-    // },
+    components: {
+        OrderSummary
+    },
+    data() {
+        return {
+            orders: []
+        }
+    },
     mounted() {
         document.title = 'My account | Beegs_shop'
 
-        // this.getMyOrders()
+        this.getMyOrders()
+        
     },
     methods: {
         logout() {
@@ -55,20 +56,20 @@ export default {
 
             this.$router.push('/')
         },
-        // async getMyOrders() {
-        //     this.$store.commit('setIsLoading', true)
+        async getMyOrders() {
+            this.$store.commit('setIsLoading', true)
 
-        //     await axios
-        //         .get('/api/v1/orders/')
-        //         .then(response => {
-        //             this.orders = response.data
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //         })
+            await axios
+                .get('/api/v1/orders/')
+                .then(response => {
+                    this.orders = response.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
 
-        //     this.$store.commit('setIsLoading', false)
-        // }
+            this.$store.commit('setIsLoading', false)
+        }
     }
 }
 </script>

@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-%a!5(k6*n+tuo#htfhqxt6xr!@u5yrp2pj_g1h5!5nt-i3d4ld
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+#stripe
+STRIPE_SECRET_KEY ='sk_test_51PBc7ORw6wMen0wWDOEA8wjWk64oCYzm8860HM4PAsqseS1EcdWkS4E8nHigz3rfoGq4MIO1GzDWfwWfouwDMgCX0067aUD9cc'
 ALLOWED_HOSTS = []
 
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'djoser',
     'product',
+    'order',
 ]
 CORS_ALLOWED_ORIGINS =[
     "http://localhost:8080",
@@ -120,7 +122,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+# REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.TokenAuthentication',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': [
+#             'rest_framework.permissions.IsAuthenticated',
+#         ],
 
+# }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
